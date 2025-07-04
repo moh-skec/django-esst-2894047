@@ -1,0 +1,48 @@
+{% load static %}
+<html>
+<head>
+    <title>Base Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}">My Notes App</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'note_list' %}">Notes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'note_create' %}">Create Note</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <form action="{% url 'logout' %}" method="post" style="display:inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link p-0">Log out</button>
+                            </form>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="my-5 text-center container">
+            {% block content %}
+            <!-- Content will be injected here -->
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 My Notes App</p>
+    </footer>
+</body>
+</html>

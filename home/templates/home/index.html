@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="{{ keywords }}">
+    <meta name="author" content="{{ author }}">
+    
+    <meta property="og:title" content="{{ og_title }}">
+    <meta property="og:description" content="{{ og_description }}">
+    <meta property="og:image" content="{{ og_image }}">
+    <meta property="og:url" content="{{ og_url }}">
+    <meta property="og:type" content="{{ og_type }}">
+    
+    <meta name="twitter:card" content="{{ twitter_card }}">
+    <meta name="twitter:site" content="{{ twitter_site }}">
+    <meta name="twitter:title" content="{{ twitter_title }}">
+    <meta name="twitter:description" content="{{ twitter_description }}">
+    <meta name="twitter:image" content="{{ twitter_image }}">
+    <meta name="twitter:creator" content="{{ twitter_creator }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background: #f9f9f9;
+            color: #222;
+        }
+        .container {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        p {
+            margin-top: 1rem;
+            color: #555;
+        }
+        a.button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        a.button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to SmartNote</h1>
+        <p>{{ description }}</p>
+        {% include 'home/advantages.html' %}
+        <a href="{% url 'note_list' %}" class="button">Get Started</a>
+        <p>Today's date is: {{ today }}</p>
+        <p>{{ author }}</p>  
+    </div>  
+</body>
+</html>
