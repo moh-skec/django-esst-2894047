@@ -4,6 +4,7 @@
     <h1 class="my-5">Note List</h1>
     <ul class="row row-col3 g-2">
         {% for note in notes %}
+            {% if note.is_public or note.author == request.user %}
                 <div class="card p-3">
                     <a href="{% url 'note_detail' note.id %}" class="card-title">{{ note.title }}</a>
                     <p class="card-text">{{ note.content|truncatewords:20 }}</p>
@@ -15,6 +16,7 @@
                         <button type="submit">Delete</button>
                     </form>
                 </div>
+            {% endif %}
         {% empty %}
             <li>No notes available.</li>
         {% endfor %}

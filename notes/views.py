@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Note  # Adjust the import based on your project structure
 from .forms import NoteForm  # Adjust the import based on your project structure
 
-class NoteListView(LoginRequiredMixin, ListView):
+class NoteListView(ListView):
     model = Note  # Replace with your actual Note model
     template_name = 'notes/note_list.html'
     context_object_name = 'notes'
